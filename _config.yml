@@ -40,4 +40,4 @@ vendors:
     app_id: cysYE5nWR
     conf: prod_ea59e8a942c2c4c0e72b24ed00ecddc9
 
-theme: minimal
+theme: jekyll-theme-minimal
