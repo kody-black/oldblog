@@ -4,7 +4,7 @@ You can use the [editor on GitHub](https://github.com/distiny-cool/distiny-cool.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-![Profile_picture](https://github.com/distiny-cool/distiny-cool.github.io/edit/main/Profile_picture.jpg)
+![Profile_picture](https://github.com/distiny-cool/distiny-cool.github.io/blob/main/Profile_picture.jpg)
 
 ### Markdown
 
