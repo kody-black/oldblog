@@ -1,8 +1,10 @@
-## Welcome to distiny-cool‘s personal blog
+## Self Introduction
 
 You can use the [editor on GitHub](https://github.com/distiny-cool/distiny-cool.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+
+![Profile_picture](D:\temp_file\distiny-cool.github.io\Profile_picture.jpg)
 
 ### Markdown
 
