@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to distiny-cool‘s personal blog
 
 You can use the [editor on GitHub](https://github.com/distiny-cool/distiny-cool.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
