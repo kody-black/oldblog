@@ -61,7 +61,7 @@ disqus_username: distiny_cool
 
 # Gitalk
 gitalk:
-  enable: false    #是否开启Gitalk评论
+  enable: true    #是否开启Gitalk评论
   clientID: 95e38a49d259269322c6                            #生成的clientID
   clientSecret: afb21acbf35f14fa8ec740faf3c4772bdb6b5edd     #生成的clientSecret
   repo: distiny-cool.github.io    #仓库名称
