@@ -61,9 +61,9 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: false    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
+  enable: true    #是否开启Gitalk评论
+  clientID: 95e38a49d259269322c6                            #生成的clientID
+  clientSecret: afb21acbf35f14fa8ec740faf3c4772bdb6b5edd     #生成的clientSecret
   repo: distiny-cool.github.io    #仓库名称
   owner: distiny-cool    #github用户名
   admin: distiny-cool
@@ -86,7 +86,7 @@ gitalk:
 
 # Featured Tags
 featured-tags: true                     # 是否使用首页标签
-featured-condition-size: 1              # 相同标签数量大于这个数，才会出现在首页
+featured-condition-size: 0              # 相同标签数量大于这个数，才会出现在首页
 
 
 
