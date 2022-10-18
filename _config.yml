@@ -18,12 +18,12 @@ sidebar-avatar: /img/about-distiny-gentle.jpg      # use absolute URL, seeing it
 
 # SNS settings
 RSS: false
-# weibo_username:     distiny-cool
-zhihu_username:     bai-wei-qi-70
+# weibo_username:     xxxxxxx
+zhihu_username:     distiny
 github_username:    distiny-cool
-# facebook_username:  baiying.qiu.7
-# jianshu_username:   e71990ada2fd
-#twitter_username:   distiny-cool
+# facebook_username:  xxxxxxx
+# jianshu_username:   xxxxxxx
+twitter_username:   DistinyKody
 
 
 
@@ -67,7 +67,7 @@ gitalk:
   repo: distiny-cool.github.io    #仓库名称
   owner: distiny-cool    #github用户名
   admin: distiny-cool
-  distractionFreeMode: true #是否启用类似FB的阴影遮罩
+  distractionFreeMode: flase #是否启用类似FB的阴影遮罩
 
 
 # 统计
