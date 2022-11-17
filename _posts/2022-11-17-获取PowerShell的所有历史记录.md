@@ -10,6 +10,9 @@ tags:
     - 配置
 ---
 
+> PowerShell默认的history命令只能查看当前窗口的历史记录，很不方便
+>
+> 可以使用以下方法获取PowerShell的所有历史记录，简单记录一下
 
 ### 一、PSReadline
 
