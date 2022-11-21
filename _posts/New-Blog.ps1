@@ -25,5 +25,8 @@ tags:
 "
 
 $content = $a + $time + $b
+$name = './'+$time+'-'+$title+".md"
 
-$content | Out-File $time-$title".md"  -NoClobber
+$content | Out-File $name  -NoClobber
+
+powershell $name
