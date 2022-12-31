@@ -31,24 +31,6 @@ let g:syntastic_auto_check_on_wq = 1
 sudo apt-get install shellcheck
 ```
 
-另一种方法是使用ALE插件。 ALE是一个异步lint框架，可以使用各种语言的语法检查工具，包括shellcheck。 安装ALE插件后，你可以在Vim中打开一个Shell脚本文件，并使用命令`:ALEFix`来检查语法错误和其他问题。
-
-你也可以设置ALE插件来自动检查脚本，只要你保存文件就会触发检查。要做到这一点，你需要在你的Vim配置文件（通常是~/.vimrc）中添加以下行：
-
-```
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
-```
-
-这将启用自动检查功能。当你打开一个新的Shell脚本文件时，ALE插件就会自动使用shellcheck来检查语法错误和其他问题。
-
-值得注意的是，在使用ALE插件之前，你需要在你的系统中安装shellcheck。要安装shellcheck，你可以使用以下命令：
-
-```
-sudo apt-get install shellcheck
-```
-
 ## vim-syntastic插件安装方法
 
 要在Vim中安装vim-syntastic插件，你可以使用一个管理插件的插件，比如Vundle或者vim-plug。这些插件可以帮助你管理和安装其他的插件。
@@ -58,14 +40,13 @@ sudo apt-get install shellcheck
 1. 首先，你需要安装Vundle。你可以使用以下命令来安装Vundle：
 
 ```
-Copy code
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 2. 然后，打开你的Vim配置文件（通常是~/.vimrc），并添加以下行：
 
 ```
-Copy codeset nocompatible              " be iMproved, required
+set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
