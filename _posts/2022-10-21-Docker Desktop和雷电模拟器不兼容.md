@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Docker Desktop和雷电模拟器不兼容
+title:      WSL和雷电模拟器不兼容
 subtitle:   
 date:       2022-10-21
 author:     Distiny
@@ -12,7 +12,7 @@ tags:
 
 ### 情况
 
-电脑上面同时装了Docker Desktop和雷电模拟器，属于一个能打开一个就打不开，寄！
+电脑上面同时装了Docker Desktop和雷电模拟器，属于一个能打开一个就打不开，寄！（根本上是WSL和雷电模拟器不兼容）
 
 Docker Desktop是原住民，然后装上了模拟器，一顿操作模拟器能用了，然后Docker Desktop就寄了，再根据网上操作把Docker Desktop重装了一下，模拟器继续寄。。。
 
@@ -22,7 +22,7 @@ Docker Desktop是原住民，然后装上了模拟器，一顿操作模拟器能
 
 ### 解决方法
 
-用docker的时候
+用docker/WSL的时候
 
 - `bcdedit /set hypervisorlaunchtype auto`
 - 重启电脑
