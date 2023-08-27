@@ -27,6 +27,7 @@ tags:
 $content = $a + $time + $b
 $name = './'+$time+'-'+$title+".md"
 
+# 注意，这里要设置编码为UTF8，否则会出现错误
 $content | Out-File -Encoding UTF8 $name  -NoClobber
 
 powershell $name
