@@ -27,6 +27,6 @@ tags:
 $content = $a + $time + $b
 $name = './'+$time+'-'+$title+".md"
 
-$content | Out-File $name  -NoClobber
+$content | Out-File -Encoding UTF8 $name  -NoClobber
 
 powershell $name
