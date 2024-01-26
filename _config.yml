@@ -52,7 +52,7 @@ plugins: [jekyll-paginate]
 markdown: kramdown
 highlighter: rouge
 kramdown:
-  # input: GFM                            # use Github Flavored Markdown !important
+  input: GFM                            # use Github Flavored Markdown !important
   syntax_highlighter: coderay
   syntax_highlighter_opts:
     line_numbers: table
