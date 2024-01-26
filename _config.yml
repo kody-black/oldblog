@@ -52,7 +52,7 @@ plugins: [jekyll-paginate]
 markdown: kramdown
 highlighter: rouge
 kramdown:
-  input: Kramdown                            # use Github Flavored Markdown !important
+  input: GFM                            # use Github Flavored Markdown !important
 
 
 
