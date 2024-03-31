@@ -8,7 +8,7 @@ header-img: img/post-bg-normal.jpg
 catalog: true
 tags:
     - Web
-    - ctf
+    - CTF
 ---
 
 ### 关于
