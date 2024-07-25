@@ -5,9 +5,9 @@ header-img: img/post-bg-desk.jpg
 email: 244258787@qq.com
 description: "Actions speak louder than words."
 keyword: "Distiny, 且听风吟"
-url: "https://distiny-cool.github.io"          # your host, for absolute URL
+url: "https://kody-black.github.io"          # your host, for absolute URL
 baseurl: "/oldblog"      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/distiny-cool/distiny-cool.github.io.git" # you code repository
+github_repo: "https://github.com/kody-black/oldblog" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -19,8 +19,8 @@ sidebar-avatar: /img/about-distiny-gentle.jpg      # use absolute URL, seeing it
 # SNS settings
 RSS: false
 # weibo_username:     xxxxxxx
-zhihu_username:     distiny-cool
-github_username:    distiny-cool
+zhihu_username:     kody-black
+github_username:    kody-black
 # facebook_username:  xxxxxxx
 # jianshu_username:   xxxxxxx
 twitter_username:   DistinyKody
@@ -67,9 +67,9 @@ gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: 95e38a49d259269322c6                            #生成的clientID
   clientSecret: afb21acbf35f14fa8ec740faf3c4772bdb6b5edd     #生成的clientSecret
-  repo: distiny-cool.github.io    #仓库名称
-  owner: distiny-cool    #github用户名
-  admin: distiny-cool
+  repo: kody-black.github.io    #仓库名称
+  owner: kody-black    #github用户名
+  admin: kody-black
   distractionFreeMode: flase #是否启用类似FB的阴影遮罩
 
 

@@ -37,7 +37,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://distiny-cool.github.io/oldblog/ # Explicitly set the URL for clarity
+      url: https://kody-black.github.io/oldblog/ # Explicitly set the URL for clarity
     runs-on: ubuntu-latest
     needs: build
     steps:
